@@ -31,6 +31,9 @@
 - [ ] Добавление **Google ReCaptcha** на форму отправки фото граффити
 - [ ] Автоматически генерируемый **sitemap**
 - [ ] Bootstrap - это хорошо, но я ниразу не дизайнер, так что если кто захочет нарисовать крутой дизайн, сверстайте его, пожалуйста.
+- [ ] favicon.ico
+- [ ] apple-touch-icon-precomposed
+- [ ] Лого
 - [ ] Сбор новых идей для их реализации в релизе **0.0.3**
 
 
@@ -40,9 +43,21 @@
 
 - Установить [Python](https://www.python.org/downloads/), не ниже версии 3.4.3
 - Скачать последнюю версию **graffiti_map**. [Стабильная](https://github.com/stleon/graffiti_map/archive/master.zip). Или выбираете интересующую вас ветку из [списка](https://github.com/stleon/graffiti_map/branches), щелкаете на нее и жмете **Clone in Desktop** или **Download ZIP** (не забудьте разархивировать)
+- Далее, в зависимости от того, что вы будете использовать - .bashrc, .bash_profile, .profile или [venv](https://docs.python.org/3/library/venv.html), надо сохранить системные переменные. Для последнего это делается в **bin/activate** (не забываем записать свои значения):
+
+```
+export SECRET_KEY=key
+export DB_NAME=name
+export DB_USER=user
+export DB_PASSWORD=pass
+export DB_HOST=host
+export DB_PORT=port
+export RECAPTCHA_PUBLIC_KEY=key
+export RECAPTCHA_PRIVATE_KEY=key
+```
 - После этого надо в терминале/командной строке перейти в папку проекта. Все дальнейшие действия делаются именно в терминале/командной строке из папки проекта.
 - Выполнить `pip install -r requirements.txt`
-- После этого надо выполнить `python manage.py migrate`
+- После этого надо выполнить `python manage.py migrate`, `python manage.py createsuperuser`
 - Если во всех пунктах ошибок не возникло, то `python manage.py runserver`
 - Читаете внимательно лог, скорее всего в браузере ресурс будет доступен по адресу `http://127.0.0.1:8000`
 
@@ -84,11 +99,10 @@ Copyright © 2015 by Tonkikh Lev Igorevich. All rights reserved.
 
 Эта программа является свободным программным обеспечением; вы можете распространять и/или изменять его в соответствии с условиями GNU General Public License, опубликованной Фондом свободного программного обеспечения, Версия 3 (или более поздней) с уточнениями и исключениями, описанными в файле лицензии. Это гарантирует ваше право использовать, модифицировать и распространять это программное обеспечение при определенных условиях.
 
-Также желательно указывать ссылку на данный репозиторий. 
+Также желательно указывать ссылку на данный репозиторий.
 
 ##Разработчики
 
 - [ST LEON](mailto:leonst998@gmail.com) ([@STLEON](https://twitter.com/inquisb))
 
 ##
-

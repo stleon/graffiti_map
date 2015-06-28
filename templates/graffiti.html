@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% load static %}
+{% block meta_css %}
+
+
+<title>{{ graffiti.name }}</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+{% endblock %}
+
+{% block application %}
+
+<h1>{{ graffiti.name }}</h1>
+
+<img class="center-block img-responsive" src="{{ graffiti.photo.url }}" alt="{{ graffiti.name }}" title="{{ graffiti.name }}">
+
+<p class="lead">
+  {{ graffiti.comment }}
+</p>
+
+<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus,surfingbird" data-yashareTheme="counter"></div>
+
+<div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'graffity19';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}

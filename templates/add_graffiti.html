@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% load static %}
+{% block meta_css %}
+
+
+<title>Добавление граффити</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+{% endblock %}
+
+{% block application %}
+
+<h1>Добавление граффити</h1>
+
+{% comment %}
+
+accept="image/jpeg,image/png,image/gif"
+image/*
+
+{% endcomment %}
+
+<form action="{% url 'add_graffiti' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+
+  <input type="submit" value="Отправить" />
+</form>
+
+{% endblock %}

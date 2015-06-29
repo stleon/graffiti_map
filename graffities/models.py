@@ -1,6 +1,7 @@
-from django.db import models
-import uuid
 import os
+import uuid
+from django.db import models
+from django.core.urlresolvers import reverse
 
 def get_file_path(instance, filename):
     filename = "%s.%s" % (uuid.uuid4(), filename.split('.')[-1].lower())
@@ -30,6 +31,9 @@ class Graffiti(models.Model):
         super(Graffity, self).delete(*args, **kwargs)
         # Удаляем файл после модели
         storage.delete(path)
+
+    def get_absolute_url(self):
+        return reverse('graffiti', kwargs={'pk': self.id,})
 
     class Meta:
         verbose_name = 'Граффити'

@@ -6,7 +6,8 @@ from django.views.decorators.http import require_http_methods
 from django.shortcuts import get_object_or_404
 from .models import Graffiti
 from .forms import AddGraffitiForm
-
+from .serializers import GraffitiSerializer
+from rest_framework import viewsets
 
 class IndexGraffitiList(ListView):
     template_name = 'index.html'
@@ -38,3 +39,7 @@ class GraffitiCreateView(CreateView):
     @method_decorator(require_http_methods(["GET", "POST"]))
     def dispatch(self, *args, **kwargs):
         return super(GraffitiCreateView, self).dispatch(*args, **kwargs)
+
+class GraffitiViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Graffiti.objects.filter(active=True, checked=True)
+    serializer_class = GraffitiSerializer

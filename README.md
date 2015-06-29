@@ -84,9 +84,6 @@ GET http://site.ru/api/graffities/
 ]
 ```
 
-
-
-
 ##Что дальше
 
 ###Релиз 0.0.2
@@ -110,9 +107,20 @@ GET http://site.ru/api/graffities/
 
 Если вы захотели потестрировать у себя дома, то вот последовательность действий (для версий выше **0.0.1**):
 
-- Установить [Python](https://www.python.org/downloads/), не ниже версии 3.4.3
-- Скачать последнюю версию **graffiti_map**. [Стабильная](https://github.com/stleon/graffiti_map/archive/master.zip). Или выбираете интересующую вас ветку из [списка](https://github.com/stleon/graffiti_map/branches), щелкаете на нее и жмете **Clone in Desktop** или **Download ZIP** (не забудьте разархивировать)
-- Далее, в зависимости от того, что вы будете использовать - .bashrc, .bash_profile, .profile или [venv](https://docs.python.org/3/library/venv.html), надо сохранить системные переменные. Для последнего это делается в **bin/activate** (не забываем записать свои значения):
+- Установаем [Python](https://www.python.org/downloads/), не ниже версии 3.4.3
+- Скачиваем последнюю версию **graffiti_map**. [Стабильная](https://github.com/stleon/graffiti_map/archive/master.zip). Или выбираете интересующую вас ветку из [списка](https://github.com/stleon/graffiti_map/branches), щелкаете на нее и жмете **Clone in Desktop** или **Download ZIP** (не забудьте разархивировать)
+- Далее, в зависимости от того, что вы будете использовать - .bashrc, .bash_profile, .profile или [venv](https://docs.python.org/3/library/venv.html), надо сохранить системные переменные.
+
+Если используете последний вариант, то в терминале/командной строке переходите в директорию проекта:
+
+```
+cd Downloads/graffiti_map // мой вариант, у вас может отличаться
+pyvenv env
+```
+
+Все дальнейшие действия делаются именно в терминале/командной строке из папки проекта.
+
+Добавляем системные переменные в  **env/bin/activate** (не забываем записать свои значения):
 
 ```
 export SECRET_KEY=key
@@ -124,8 +132,8 @@ export DB_PORT=port
 export RECAPTCHA_PUBLIC_KEY=key
 export RECAPTCHA_PRIVATE_KEY=key
 ```
-- После этого надо в терминале/командной строке перейти в папку проекта. Все дальнейшие действия делаются именно в терминале/командной строке из папки проекта.
-- Выполнить `pip install -r requirements.txt`
+- Активируем виртуальное окружение `source env/bin/activate`
+- Выполняем `pip install -r requirements.txt`
 - После этого надо выполнить `python manage.py migrate`, `python manage.py createsuperuser`
 - Если во всех пунктах ошибок не возникло, то `python manage.py runserver`
 - Читаете внимательно лог, скорее всего в браузере ресурс будет доступен по адресу `http://127.0.0.1:8000`

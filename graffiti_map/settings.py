@@ -175,7 +175,20 @@ RECAPTCHA_PRIVATE_KEY = get_env_setting('RECAPTCHA_PRIVATE_KEY')
 NOCAPTCHA = True
 
 REST_FRAMEWORK = {
+
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-    )
+    ),
+
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ),
+
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/minute',
+        'user': '10/minute'
+    },
 }
+
+# TODO https://docs.djangoproject.com/en/dev/topics/cache/#setting-up-the-cache

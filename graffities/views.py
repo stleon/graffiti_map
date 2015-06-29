@@ -11,8 +11,10 @@ from rest_framework import viewsets
 
 class IndexGraffitiList(ListView):
     template_name = 'index.html'
-    queryset = Graffiti.objects.filter(active=True, checked=True).reverse()
+    queryset = Graffiti.objects.filter(active=True, checked=True).order_by('date_created').reverse()
     context_object_name = 'graffities'
+    page_kwarg = 'str'
+    paginate_by = 10
 
     @method_decorator(require_http_methods(["GET",]))
     def dispatch(self, *args, **kwargs):

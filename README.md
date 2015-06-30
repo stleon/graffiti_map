@@ -88,12 +88,13 @@ GET http://site.ru/api/graffities/
 
 ###Релиз 0.0.2
 
-- [ ] Переход с Bottle на **Django**
+- [x] Переход с Bottle на **Django**
 - [x] Настройка раздела администрирования
 - [x] Страница добавления граффити (карта и форма)
 - [x] Добавление **Google ReCaptcha** на форму добавления граффити
 - [x] API для чтения (get) информации о всех граффити
 - [x] Автоматически генерируемый **sitemap**
+- [x] Интеграция с [Mandrill](http://habrahabr.ru/post/256055/) для отправки уведомлений, если что-то поломалось
 - [ ] Bootstrap - это хорошо, но я ниразу не дизайнер, так что если кто захочет нарисовать крутой дизайн, сверстайте его, пожалуйста.
 - [ ] favicon.ico
 - [ ] apple-touch-icon-precomposed
@@ -131,6 +132,7 @@ export DB_HOST=host
 export DB_PORT=port
 export RECAPTCHA_PUBLIC_KEY=key
 export RECAPTCHA_PRIVATE_KEY=key
+export MANDRILL_API_KEY=key
 ```
 - Активируем виртуальное окружение `source env/bin/activate`
 - Выполняем `pip install -r requirements.txt`

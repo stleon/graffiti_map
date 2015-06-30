@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'graffities',
     'captcha',
     'rest_framework',
+    'djrill',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -191,5 +192,14 @@ REST_FRAMEWORK = {
         'user': '10/minute'
     },
 }
+
+# Mailing
+
+MANDRILL_API_KEY = get_env_setting('MANDRILL_API_KEY')
+EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+EMAIL_HOST_USER = ADMINS[0][1]
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+
 
 # TODO https://docs.djangoproject.com/en/dev/topics/cache/#setting-up-the-cache

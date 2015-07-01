@@ -3,9 +3,9 @@ from django.core.exceptions import ImproperlyConfigured
 
 def get_env_setting(var):
      try:
-          return os.environ[var]
+        return os.environ[var]
      except KeyError:
-          raise ImproperlyConfigured('Переменная %s не задана' % var)
+        raise ImproperlyConfigured('Переменная %s не задана' % var)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

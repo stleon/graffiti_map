@@ -14,7 +14,7 @@ class IndexGraffitiList(ListView):
     queryset = Graffiti.objects.filter(active=True, checked=True).order_by('date_created').reverse()
     context_object_name = 'graffities'
     page_kwarg = 'str'
-    paginate_by = 10
+    paginate_by = 12
 
     @method_decorator(require_http_methods(["GET",]))
     def dispatch(self, *args, **kwargs):
@@ -36,7 +36,7 @@ class GraffitiCreateView(CreateView):
     template_name = 'add_graffiti.html'
     model = Graffiti
     form_class = AddGraffitiForm
-    success_url = "/success/"
+    success_url = "/success"
 
     @method_decorator(require_http_methods(["GET", "POST"]))
     def dispatch(self, *args, **kwargs):

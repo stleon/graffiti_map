@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load thumbnail %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -24,7 +25,7 @@
     {% endif %}
 
     <style>
-    #map {width:auto; height:800px;}
+    #map {width:auto; height:900px;}
     </style>
 
     {% endblock %}
@@ -39,13 +40,11 @@
     <![endif]-->
     <link rel="shortcut icon" href="{% static "favicon.ico" %}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "img/logo_touch_icon.png" %}">
-    <style>
-      body { padding-top: 70px; padding-bottom: 70px;}
-    </style>
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -81,24 +80,20 @@
         <div class="col-md-6 col-xs-9 col-sm-6">
             <h4>Граффити на карте</h4>
             {% if graffities %}
-
+              <div class="row">
               {% for graffiti in graffities %}
+                <div class="col-sm-6 col-md-4">
+                  <a class="thumbnail" href="{% url 'graffiti' graffiti.id %}" data-toggle="tooltip" data-placement="bottom" title="«{{ graffiti.name }}» {{ graffiti.date_created|date:"H:i:s" }} {{ graffiti.date_created|date:"j.m.Y" }}">
 
-                <div class="media">
-                  <div class="media-left">
-                    <a href="{% url 'graffiti' graffiti.id %}">
-                      <img class="media-object img-rounded" src="{{ graffiti.photo.url }}" width="400" height="275" alt="{{ graffiti.name }}" title="{{ graffiti.name }}">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <p class="lead"><span class="glyphicon glyphicon-text-background" aria-hidden="true"></span> {{ graffiti.name }}</p>
-                    <p class="lead"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ graffiti.date_created|date:"H:i:s" }}</p>
-                    <p class="lead"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{ graffiti.date_created|date:"j.m.Y" }}</p>
-                    <p class="lead"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> <a href="{% url 'graffiti' graffiti.id %}">Подробнее</a></p>
-                  </div>
+                    {% thumbnail graffiti.photo "270x190" crop="center" as im %}
+                      <img class="img-rounded" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ graffiti.name }}" title="{{ graffiti.name }}">
+                    {% endthumbnail %}
+
+                  </a>
                 </div>
 
               {% endfor %}
+              </div>
 
               {% if is_paginated %}
 
@@ -153,7 +148,7 @@
 
           {% if graffities %}
 
-            <div id="map" data-spy="affix" data-offset-top="70"></div>
+            <div id="map"></div>
 
           {% else %}
 
@@ -171,24 +166,43 @@
     {% endblock %}
     </div>
 
-    <footer class="navbar navbar-fixed-bottom text-muted navbar-inverse">
+    <footer class="footer">
 
       <div class="container-fluid text-center">
-        <a href="https://github.com/stleon/graffiti_map" target="_blank">
-          <img src="{% static "img/GitHub-Mark-Light-120px-plus.png" %}" width="16" height="16">
-          Исходный код на GitHub
-        </a> {% now "Y" %}
+
+        <p>
+          <a class="github-button" href="https://github.com/stleon/graffiti_map" data-icon="octicon-star" data-count-href="/stleon/graffiti_map/stargazers" data-count-api="/repos/stleon/graffiti_map#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star stleon/graffiti_map on GitHub">Star</a>
+          <a class="github-button" href="https://github.com/stleon/graffiti_map/fork" data-icon="octicon-git-branch" data-count-href="/stleon/graffiti_map/network" data-count-api="/repos/stleon/graffiti_map#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork stleon/graffiti_map on GitHub">Fork</a>
+        </p>
+        <p>
+          <a class="github-button" href="https://github.com/stleon/graffiti_map/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download stleon/graffiti_map on GitHub">Download</a>
+        </p>
+        <p>Спроектировано и сделано с любовью от <a href="http://twitter.com/STLEON" target="_blank">@STLEON</a></p>
+        <p>Поддерживается командой <a href="http://partizaning.org/" target="_blank">Партизанинг</a> и <a href="https://github.com/stleon/graffiti_map/graphs/contributors" target="_blank">добрыми людьми</a></p>
+        <p>Исходный код распространяется под <a href="http://www.gnu.org/licenses/quick-guide-gplv3.ru.html" target="_blank">GNU GPLv3</a></p>
+        <p>© {% now "Y" %} <a href="#">Graffiti_Map</a></p>
+        <ul class="list-inline">
+          <li><a href="https://github.com/stleon/graffiti_map" target="_blank">GitHub</a></li>
+          <li>Документация</li>
+          <li><a href="https://github.com/stleon/graffiti_map/issues" target="_blank">Вопросы</a></li>
+          <li><a href="https://github.com/stleon/graffiti_map/releases" target="_blank">Релизы</a></li>
+        </ul>
       </div>
 
     </footer>
 
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
-
+    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js" type="text/javascript"></script>
     {% block scripts %}
 
       <script src="{% static 'js/yandex_map.js' %}" type="text/javascript"></script>
       <script src="{% static 'js/main_map.js' %}" type="text/javascript"></script>
+      <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      </script>
 
     {% endblock %}
   </body>

@@ -3,3 +3,4 @@ Pillow
 django-recaptcha
 djangorestframework
 djrill
+sorl-thumbnail

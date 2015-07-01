@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'captcha',
     'rest_framework',
     'djrill',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -201,5 +202,7 @@ EMAIL_HOST_USER = ADMINS[0][1]
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 
+
+ADMIN_URL = get_env_setting('ADMIN_URL')
 
 # TODO https://docs.djangoproject.com/en/dev/topics/cache/#setting-up-the-cache

@@ -133,6 +133,7 @@ export DB_PORT=port
 export RECAPTCHA_PUBLIC_KEY=key
 export RECAPTCHA_PRIVATE_KEY=key
 export MANDRILL_API_KEY=key
+export ADMIN_URL='url'
 ```
 - Активируем виртуальное окружение `source env/bin/activate`
 - Выполняем `pip install -r requirements.txt`

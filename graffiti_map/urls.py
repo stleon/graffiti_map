@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.contrib.sitemaps import views
-from .settings import PROJECT_NAME, DEBUG, MEDIA_ROOT
+from .settings import PROJECT_NAME, DEBUG, MEDIA_ROOT, ADMIN_URL
 from .sitemaps import StaticViewSitemap
 from graffities.sitemaps import GraffitiSitemap
 from django.views.decorators.cache import cache_page
@@ -23,7 +23,7 @@ sitemaps = dict(
 )
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^%s/' % ADMIN_URL, include(admin.site.urls)),
     url(r'^', include('graffities.urls')),
     url(r'^contacts$', TemplateView.as_view(template_name="contacts.html"),
         name='contacts'),

@@ -82,10 +82,10 @@
             {% if graffities %}
               <div class="row">
               {% for graffiti in graffities %}
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-2">
                   <a class="thumbnail" href="{% url 'graffiti' graffiti.id %}" data-toggle="tooltip" data-placement="bottom" title="«{{ graffiti.name }}» {{ graffiti.date_created|date:"H:i:s" }} {{ graffiti.date_created|date:"j.m.Y" }}">
 
-                    {% thumbnail graffiti.photo "270x190" crop="center" as im %}
+                    {% thumbnail graffiti.photo "200x100" crop="center" as im %}
                       <img class="img-rounded" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ graffiti.name }}" title="{{ graffiti.name }}">
                     {% endthumbnail %}
 
@@ -149,6 +149,33 @@
           {% if graffities %}
 
             <div id="map"></div>
+            <div class="text-center">
+              <br>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal">Получить код для вставки на свой сайт</button>
+
+            </div>
+
+            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="ModalLabel">Код встави карты на свой сайт</h4>
+                  </div>
+                  <div class="modal-body">
+                    Скопируйте код
+                    <script src="https://gist.github.com/stleon/e5b19f31f02b3c7e41a6.js"></script>
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary">Пожертвовать</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
           {% else %}
 

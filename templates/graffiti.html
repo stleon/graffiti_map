@@ -22,21 +22,36 @@
   {{ graffiti.comment }}
 </p>
 
+<p>
+{% if graffiti.legal %}
+
+  <span class="label label-success"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Легальное</span> Данное граффити сделано легально и было загружено на сайт <strong>{{ graffiti.date_created|timesince }}</strong> назад.
+
+{% else %}
+
+  <span class="label label-warning"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span> Нелегальное</span> Данное граффити сделано нелегально и было загружено на сайт <strong>{{ graffiti.date_created|timesince }}</strong> назад. Возможно, оно уже уничтожено.
+
+{% endif %}
+</p>
+
+
 <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus,surfingbird" data-yashareTheme="counter"></div>
 
-<div id="disqus_thread"></div>
-  <script type="text/javascript">
-      /* * * CONFIGURATION VARIABLES * * */
-      var disqus_shortname = 'graffity19';
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<div id="hypercomments_widget"></div>
+<script type="text/javascript">
+_hcwp = window._hcwp || [];
+_hcwp.push({widget:"Stream", widget_id: 61361});
+(function() {
+if("HC_LOAD_INIT" in window)return;
+HC_LOAD_INIT = true;
+var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/61361/"+lang+"/widget.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hcc, s.nextSibling);
+})();
+</script>
+<a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
 
 {% endblock %}
 

@@ -134,7 +134,18 @@ export RECAPTCHA_PUBLIC_KEY=key
 export RECAPTCHA_PRIVATE_KEY=key
 export MANDRILL_API_KEY=key
 export ADMIN_URL='url'
+export THUMBNAIL_REDIS_HOST=host
+export THUMBNAIL_REDIS_PORT=port
+export THUMBNAIL_REDIS_DB=0-16
+export THUMBNAIL_REDIS_PASSWORD=pass
+export SESSION_REDIS_HOST=host
+export SESSION_REDIS_PORT=port
+export SESSION_REDIS_DB=0-16
+export SESSION_REDIS_PASSWORD=pass
+export SESSION_REDIS_PREFIX=prefix
 ```
++ надо создать свой **redis.conf**
+
 - Активируем виртуальное окружение `source env/bin/activate`
 - Выполняем `pip install -r requirements.txt`
 - После этого надо выполнить `python manage.py migrate`, `python manage.py createsuperuser`

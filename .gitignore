@@ -59,3 +59,4 @@ target/
 
 # Databases
 *.sqlite3
+*.rdb

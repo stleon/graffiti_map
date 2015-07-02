@@ -23,7 +23,10 @@ ADMINS = (
      ('stleon', 'leonst998@gmail.com'),
 )
 
-MANAGERS = ADMINS
+MANAGERS = (
+    ('Igor', 'iponosov@gmail.com'),
+    ('Make', 'makemakemakemake@gmail.com'),
+)
 
 # Application definition
 
@@ -40,10 +43,12 @@ INSTALLED_APPS = (
     'rest_framework',
     'djrill',
     'sorl.thumbnail',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -199,10 +204,33 @@ REST_FRAMEWORK = {
 MANDRILL_API_KEY = get_env_setting('MANDRILL_API_KEY')
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 EMAIL_HOST_USER = ADMINS[0][1]
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
-
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER # корреспонденция для менеджеров
+SERVER_EMAIL = EMAIL_HOST_USER # для отправки сообщений о ошибках
 
 ADMIN_URL = get_env_setting('ADMIN_URL')
 
 # TODO https://docs.djangoproject.com/en/dev/topics/cache/#setting-up-the-cache
+
+# CORS
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
+CORS_ALLOW_CREDENTIALS = True
+
+# THUMBNAIL
+
+THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
+THUMBNAIL_REDIS_HOST = get_env_setting('THUMBNAIL_REDIS_HOST')
+THUMBNAIL_REDIS_PORT = get_env_setting('THUMBNAIL_REDIS_PORT')
+THUMBNAIL_REDIS_DB = get_env_setting('THUMBNAIL_REDIS_DB')
+THUMBNAIL_REDIS_PASSWORD = get_env_setting('THUMBNAIL_REDIS_PASSWORD')
+
+
+# Sessions
+
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_HOST = get_env_setting('SESSION_REDIS_HOST')
+SESSION_REDIS_PORT = get_env_setting('SESSION_REDIS_PORT')
+SESSION_REDIS_DB = get_env_setting('SESSION_REDIS_DB')
+SESSION_REDIS_PASSWORD = get_env_setting('SESSION_REDIS_PASSWORD')
+SESSION_REDIS_PREFIX = get_env_setting('SESSION_REDIS_PREFIX')

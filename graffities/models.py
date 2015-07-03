@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.core.urlresolvers import reverse
 from sorl.thumbnail import ImageField, get_thumbnail, delete
+from django.core.files.base import ContentFile
 
 
 def get_file_path(instance, filename):
@@ -27,21 +28,25 @@ class Graffiti(models.Model):
     def __str__(self):
         return '%s, %s' % (self.id, self.name)
 
+    def get_absolute_url(self):
+        return reverse('graffiti', kwargs={'pk': self.id,})
+
+    def save(self, *args, **kwargs):
+        # Можно и асинхронную очередь сделать, но на первое время норм
+        if not self.id:
+            # Сначала сохраняем картинку
+            super(Graffiti, self).save(*args, **kwargs)
+            # Изменяем картинку
+            resized = get_thumbnail(self.photo, 'x1024', quality=99, format='JPEG')
+            # сохраняем
+            self.photo.save(resized.name, ContentFile(resized.read()), True)
+        super(Graffiti, self).save(*args, **kwargs)
+
     def delete(self, *args, **kwargs):
         storage, path = self.photo.storage, self.photo.path
         super(Graffiti, self).delete(*args, **kwargs)
         storage.delete(path) # Удаляем файл после модели
         delete(path)
-
-    def get_absolute_url(self):
-        return reverse('graffiti', kwargs={'pk': self.id,})
-
-    def save(self, *args, **kwargs):
-
-        #if str(self.photo).split('.')[-1].lower() not in ('jpg', 'jpeg'):
-        #    self.photo = get_thumbnail(self.photo, 'x1024', quality=99, format='JPEG')
-
-        super(Graffiti, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Граффити'

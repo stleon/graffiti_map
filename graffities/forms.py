@@ -13,7 +13,7 @@ class AddGraffitiForm(ModelForm):
     def send_email(self):
         msg = EmailMultiAlternatives(
             subject='Добавлено новое граффити!',
-            body='Надо проверить!\nНазвание: %s\Описание: %s\n' % (self.cleaned_data['name'], self.cleaned_data['comment']),
+            body='Надо проверить!\nНазвание: %s\nОписание: %s\n' % (self.cleaned_data['name'], self.cleaned_data['comment']),
             from_email='Graffiti Map <%s>' % DEFAULT_FROM_EMAIL,
             to=MANAGERS,
         )

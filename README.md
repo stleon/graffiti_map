@@ -88,7 +88,7 @@ GET http://site.ru/api/graffities/
 
 Чтобы ваш **pull request** был принят, нужно чтобы он соответствовал следующим правилам:
 
-- Прежде чеи приступать к работе, ее надо обсудить
+- Прежде чем приступать к работе, ее надо обсудить
 - Каждый патч должен делать одно логическое изменение
 - Код должен быть оформлен по PEP 8. 4 пробела, а не табы
 - Код должен тестироваться. 100% покрытие не нужно, но лениться тоже не надо
@@ -153,8 +153,7 @@ export SESSION_REDIS_DB=0-16
 export SESSION_REDIS_PASSWORD=pass
 export SESSION_REDIS_PREFIX=prefix
 ```
-+ надо создать свой **redis.conf**
-
+- надо создать свой **redis.conf**
 - Активируем виртуальное окружение `source env/bin/activate`
 - Выполняем `pip install -r requirements.txt`
 - После этого надо выполнить `python manage.py migrate`, `python manage.py createsuperuser`

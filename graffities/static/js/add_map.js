@@ -2,13 +2,36 @@ ymaps.ready(init);
 var myMap;
 
 function init () {
+  var lat = $('#id_lat').val();
+  var lon = $('#id_lon').val();
+  var zoom = 11
+
+  if (lat && lon) {
+    var do_balloon = true;
+    zoom = 17
+  }
+  else{
+    lat = 55.753559;
+    lon = 37.609218;
+  }
+
     myMap = new ymaps.Map("map", {
-        center: [55.753559, 37.609218],
-        zoom: 11
+        center: [lat, lon],
+        zoom: zoom
     }, {
         balloonMaxWidth: 200,
         searchControlProvider: 'yandex#search'
     });
+
+    // Если координаты есть, добавим балун
+    if (do_balloon) {
+      var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
+          preset: 'islands#redDotIcon'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+
 
     // Обработка события, возникающего при щелчке
     // левой кнопкой мыши в любой точке карты.

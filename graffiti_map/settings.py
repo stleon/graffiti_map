@@ -1,11 +1,13 @@
 import os
 from django.core.exceptions import ImproperlyConfigured
 
+
 def get_env_setting(var):
-     try:
+    try:
         return os.environ[var]
-     except KeyError:
+    except KeyError:
         raise ImproperlyConfigured('Переменная %s не задана' % var)
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -15,36 +17,24 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1', )
 
-ADMINS = (
-     ('stleon', 'leonst998@gmail.com'),
-)
+ADMINS = (('stleon', 'leonst998@gmail.com'), )
 
 MANAGERS = (
     ('Igor', 'iponosov@gmail.com'),
-    ('Make', 'makemakemakemake@gmail.com'),
-)
+    ('Make', 'makemakemakemake@gmail.com'), )
 
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sitemaps',
-    'graffities',
-    'captcha',
-    'rest_framework',
-    'djrill',
-    'sorl.thumbnail',
-    'corsheaders',
-)
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles',
+    'django.contrib.sitemaps', 'graffities', 'captcha', 'rest_framework',
+    'djrill', 'sorl.thumbnail', 'corsheaders', )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,8 +45,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-)
+    'django.middleware.security.SecurityMiddleware', )
 
 ROOT_URLCONF = 'graffiti_map.urls'
 
@@ -160,9 +149,8 @@ LOGGING = {
     },
     'handlers': {
         'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+            'level': 'ERROR', 'filters': ['require_debug_false'
+                        ], 'class': 'django.utils.log.AdminEmailHandler'
         }
     },
     'loggers': {
@@ -183,19 +171,14 @@ RECAPTCHA_PRIVATE_KEY = get_env_setting('RECAPTCHA_PRIVATE_KEY')
 NOCAPTCHA = True
 
 REST_FRAMEWORK = {
-
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
-
     'DEFAULT_THROTTLE_CLASSES': (
         'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ),
-
+        'rest_framework.throttling.UserRateThrottle'),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/minute',
-        'user': '10/minute'
+        'anon': '10/minute', 'user': '10/minute'
     },
 }
 
@@ -204,8 +187,8 @@ REST_FRAMEWORK = {
 MANDRILL_API_KEY = get_env_setting('MANDRILL_API_KEY')
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 EMAIL_HOST_USER = ADMINS[0][1]
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER # корреспонденция для менеджеров
-SERVER_EMAIL = EMAIL_HOST_USER # для отправки сообщений о ошибках
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # корреспонденция для менеджеров
+SERVER_EMAIL = EMAIL_HOST_USER  # для отправки сообщений о ошибках
 
 ADMIN_URL = get_env_setting('ADMIN_URL')
 
@@ -224,7 +207,6 @@ THUMBNAIL_REDIS_HOST = get_env_setting('THUMBNAIL_REDIS_HOST')
 THUMBNAIL_REDIS_PORT = get_env_setting('THUMBNAIL_REDIS_PORT')
 THUMBNAIL_REDIS_DB = get_env_setting('THUMBNAIL_REDIS_DB')
 THUMBNAIL_REDIS_PASSWORD = get_env_setting('THUMBNAIL_REDIS_PASSWORD')
-
 
 # Sessions
 

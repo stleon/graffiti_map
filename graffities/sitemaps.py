@@ -1,6 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Graffiti
 
+
 class GraffitiSitemap(Sitemap):
     changefreq = "daily"
 

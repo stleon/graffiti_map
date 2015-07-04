@@ -49,9 +49,14 @@ coverage.xml
 
 # Django stuff:
 *.log
+/dynamic
 
 # Sphinx documentation
 docs/_build/
 
 # PyBuilder
 target/
+
+# Databases
+*.sqlite3
+*.rdb

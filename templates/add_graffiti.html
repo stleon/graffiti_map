@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% load static %}
+{% block meta_css %}
+
+
+<title>Добавление граффити</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+{% endblock %}
+
+{% block application %}
+
+<h1>Добавление граффити</h1>
+
+<form action="{% url 'add_graffiti' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div id="map" style="width:auto; height:300px"></div>
+  {% for field in form %}
+    <div class="form-group">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+  {% endfor %}
+
+
+
+  <button type="submit" class="btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Отправить</button>
+
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/yandex_map.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/add_map.js' %}" type="text/javascript"></script>
+
+
+{% endblock %}

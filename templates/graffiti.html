@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% load static %}
+{% block meta_css %}
+
+
+<title>{{ graffiti.name }}</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+{% endblock %}
+
+{% block application %}
+
+<h1>{{ graffiti.name }}</h1>
+
+<img class="center-block img-responsive" src="{{ graffiti.photo.url }}" alt="{{ graffiti.name }}" title="{{ graffiti.name }}">
+
+<h2>Описание</h2>
+
+<p class="lead">
+  {{ graffiti.comment }}
+</p>
+
+<p>
+{% if graffiti.legal %}
+
+  <span class="label label-success"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Легальное</span> Данное граффити сделано легально и было загружено на сайт <strong>{{ graffiti.date_created|timesince }}</strong> назад.
+
+{% else %}
+
+  <span class="label label-warning"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span> Нелегальное</span> Данное граффити сделано нелегально и было загружено на сайт <strong>{{ graffiti.date_created|timesince }}</strong> назад. Возможно, оно уже уничтожено.
+
+{% endif %}
+</p>
+
+
+<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus,surfingbird" data-yashareTheme="counter"></div>
+
+<div id="hypercomments_widget"></div>
+<script type="text/javascript">
+_hcwp = window._hcwp || [];
+_hcwp.push({widget:"Stream", widget_id: 61361});
+(function() {
+if("HC_LOAD_INIT" in window)return;
+HC_LOAD_INIT = true;
+var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/61361/"+lang+"/widget.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hcc, s.nextSibling);
+})();
+</script>
+<a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}

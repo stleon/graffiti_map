@@ -1,0 +1,9 @@
+django==1.8.2
+Pillow
+django-recaptcha
+djangorestframework
+djrill
+sorl-thumbnail
+django-cors-headers
+redis
+django-redis-sessions

@@ -5,7 +5,6 @@ from django.contrib.sitemaps import views
 from .settings import PROJECT_NAME, DEBUG, MEDIA_ROOT, ADMIN_URL
 from .sitemaps import StaticViewSitemap
 from graffities.sitemaps import GraffitiSitemap
-from django.views.decorators.cache import cache_page
 
 # Настройка админки
 
@@ -29,9 +28,8 @@ urlpatterns = [
         name='contacts'),
     url(r'^about$', TemplateView.as_view(template_name="about.html"),
         name='about'),
-    url(r'^sitemap\.xml$', cache_page(600)(views.index), {'sitemaps': sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', cache_page(600)(views.sitemap),
-        {'sitemaps': sitemaps}),
+    url(r'^sitemap\.xml$', views.index, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', views.sitemap, {'sitemaps': sitemaps}),
     ]
 
 if DEBUG:

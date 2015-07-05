@@ -7,3 +7,4 @@ sorl-thumbnail
 django-cors-headers
 redis
 django-redis-sessions
+uwsgi

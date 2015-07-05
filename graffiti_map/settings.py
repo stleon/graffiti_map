@@ -15,7 +15,7 @@ PROJECT_NAME = 'Graffiti_Map'
 
 SECRET_KEY = get_env_setting('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', ]
 
@@ -107,7 +107,7 @@ USE_TZ = True
 
 STATIC_URL = '/core/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
 
 MEDIA_URL = '/datastore/'
 

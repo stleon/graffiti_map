@@ -167,6 +167,7 @@ export SESSION_REDIS_PREFIX=prefix
 - Активируем виртуальное окружение `source env/bin/activate`
 - Выполняем `pip install -r requirements.txt`
 - После этого надо выполнить `python manage.py migrate`, `python manage.py createsuperuser`
+- Открываем файл **settings.py** и проверяем **DEBUG = True**
 - Если во всех пунктах ошибок не возникло, то `python manage.py runserver`
 - Читаете внимательно лог, скорее всего в браузере ресурс будет доступен по адресу `http://127.0.0.1:8000`
 

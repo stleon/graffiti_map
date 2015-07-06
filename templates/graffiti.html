@@ -25,11 +25,11 @@
 <p>
 {% if graffiti.legal %}
 
-  <span class="label label-success"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Легальное</span> Данное граффити сделано легально и было загружено на сайт <strong>{{ graffiti.date_created|timesince }}</strong> назад.
+  <span class="label label-success"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Легальное</span> Данное граффити сделано легально. Время, прошедшее с момента загрузки: <strong>{{ graffiti.date_created|timesince }}</strong>.
 
 {% else %}
 
-  <span class="label label-warning"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span> Нелегальное</span> Данное граффити сделано нелегально и было загружено на сайт <strong>{{ graffiti.date_created|timesince }}</strong> назад. Возможно, оно уже уничтожено.
+  <span class="label label-warning"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span> Нелегальное</span> Данное граффити сделано нелегально. Время, прошедшее с момента загрузки: <strong>{{ graffiti.date_created|timesince }}</strong>. Возможно, оно уже уничтожено.
 
 {% endif %}
 </p>

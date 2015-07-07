@@ -26,9 +26,8 @@ class AddGraffitiForm(ModelForm):
         exclude = ('checked', 'active', 'legal')
         widgets = {
             'photo': widgets.FileInput(
-                attrs=
-                {'accept': 'image/jpeg,image/png,image/gif',
-                 'required': ''}),
+                attrs={'accept': 'image/jpeg',
+                       'required': ''}),
             'name': widgets.TextInput(attrs=base_attr),
             'comment': widgets.TextInput(attrs=base_attr),
             'lat': widgets.NumberInput(attrs=base_attr),

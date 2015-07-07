@@ -10,6 +10,13 @@ class GraffitiAdmin(admin.ModelAdmin):
                     'date_updated', 'active', 'checked', )
     list_filter = ['active', 'checked', 'legal', ]
     search_fields = ['name', 'lat', 'lon']
+    fieldsets = [
+        (None, {'fields': ['photo']}),
+        ('Информация', {'fields': ['name', 'comment']}),
+        ('Статус', {'fields': ['active', 'checked', 'legal']}),
+        ('Координаты', {'fields': ['lat', 'lon']}),
+        ('Карта', {'fields': ['ya_map']}),
+    ]
 
     class form(forms.ModelForm):
         ya_map = forms.BooleanField(label='Карта',

@@ -24,8 +24,8 @@ INTERNAL_IPS = ('127.0.0.1', )
 ADMINS = (('stleon', 'leonst998@gmail.com'), )
 
 MANAGERS = (
-    ('Igor', 'iponosov@gmail.com'),
-    ('Make', 'makemakemakemake@gmail.com'), )
+    ('Igor', 'iponosov@gmail.com'), ('Make', 'makemakemakemake@gmail.com'),
+)
 
 # Application definition
 
@@ -149,8 +149,9 @@ LOGGING = {
     },
     'handlers': {
         'mail_admins': {
-            'level': 'ERROR', 'filters': ['require_debug_false'
-                        ], 'class': 'django.utils.log.AdminEmailHandler'
+            'level': 'ERROR', 'filters': [
+                'require_debug_false'
+            ], 'class': 'django.utils.log.AdminEmailHandler'
         }
     },
     'loggers': {
@@ -207,6 +208,7 @@ THUMBNAIL_REDIS_HOST = get_env_setting('THUMBNAIL_REDIS_HOST')
 THUMBNAIL_REDIS_PORT = get_env_setting('THUMBNAIL_REDIS_PORT')
 THUMBNAIL_REDIS_DB = get_env_setting('THUMBNAIL_REDIS_DB')
 THUMBNAIL_REDIS_PASSWORD = get_env_setting('THUMBNAIL_REDIS_PASSWORD')
+DJANGORESIZED_DEFAULT_KEEP_META = False
 
 # Sessions
 

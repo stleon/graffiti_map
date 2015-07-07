@@ -20,7 +20,8 @@ function init () {
         zoom: zoom
     }, {
         balloonMaxWidth: 200,
-        searchControlProvider: 'yandex#search'
+        searchControlProvider: 'yandex#search',
+        suppressMapOpenBlock: true
     });
 
     // Если координаты есть, добавим балун

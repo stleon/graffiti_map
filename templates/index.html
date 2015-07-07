@@ -164,14 +164,21 @@
                     <h4 class="modal-title" id="ModalLabel">Код встави карты на свой сайт</h4>
                   </div>
                   <div class="modal-body">
-                    Скопируйте код
+                    <p>Приведенный ниже код является лишь примером.</p>
+                    <p>Если вы хотите вставить карту на свой сайт/блог, то нужно выполнить следующие действия на своем ресурсе:</p>
+                    <ul>
+                      <li>Скопировать строчки 7-24 и разместить их до закрывающего тега <code>&lt;/head&gt;</code></li>
+                      <li>Содержание строчки 28 вставить на то место, где бы вы хотели разместить карту</li>
+                      <li>Скопировать строчки 29-81 и разместить их до закрывающего тега <code>&lt;/body&gt;</code></li>
+                    </ul>
+                    <p>Ниже представлен пример <code>html</code>-страницы, код из которой нужно использовать в описанных выше шагах:</p>
                     <script src="https://gist.github.com/stleon/e5b19f31f02b3c7e41a6.js"></script>
 
 
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                    <a href="http://yasobe.ru/na/graffiti_map" target="_blank" type="button" class="btn btn-primary">Пожертвовать</a>
+                    <a href="{% url 'help' %}" target="_blank" type="button" class="btn btn-primary">Помощь проекту</a>
                   </div>
                 </div>
               </div>

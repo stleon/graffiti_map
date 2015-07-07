@@ -200,6 +200,16 @@ ADMIN_URL = get_env_setting('ADMIN_URL')
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = (
+        'x-requested-with',
+        'content-type',
+        'accept',
+        'origin',
+        'authorization',
+        'x-csrftoken',
+        'dnt',
+        'accept-encoding',
+    )
 
 # THUMBNAIL
 

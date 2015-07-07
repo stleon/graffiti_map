@@ -64,7 +64,7 @@
             <li {% block add_graffiti %}{% endblock %}><a href="{% url 'add_graffiti' %}">Добавить граффити</a></li>
             <li><a href="{% url 'about' %}">О нас</a></li>
             <li><a href="{% url 'contacts' %}">Контакты</a></li>
-            <li><a href="http://yasobe.ru/na/graffiti_map" target="_blank">Помощь проекту</a></li>
+            <li><a href="{% url 'help' %}" target="_blank">Помощь проекту</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="http://partizaning.org" target="_blank">Партизанинг</a></li>
@@ -78,12 +78,12 @@
 
       <div class="row">
 
-        <div class="col-md-6 col-xs-12 col-sm-12">
+        <div class="col-md-3 col-xs-12 col-sm-12">
             <h4>Граффити на карте</h4>
             {% if graffities %}
               <div class="row">
               {% for graffiti in graffities %}
-                <div class="col-sm-6 col-md-2">
+                <div class="col-sm-6 col-md-4">
                   <a class="thumbnail" href="{% url 'graffiti' graffiti.id %}" data-toggle="tooltip" data-placement="bottom" title="«{{ graffiti.name }}» {{ graffiti.date_created|date:"H:i:s" }} {{ graffiti.date_created|date:"j.m.Y" }}">
 
                     {% thumbnail graffiti.photo "200x100" crop="center" as im %}
@@ -145,7 +145,7 @@
 
         </div>
 
-        <div class="col-md-6 col-xs-12 col-sm-12">
+        <div class="col-md-9 col-xs-12 col-sm-12">
 
           {% if graffities %}
 

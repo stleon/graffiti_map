@@ -37,8 +37,8 @@ ymaps.ready(function () {
                 },
               "properties": {
                 "balloonContentHeader": data[i]["name"],
-                "balloonContent": '<center><a href="/graffiti/'+ data[i]["id"] +'" target=_blank><img class="img-responsive" src="'+ data[i]["photo"] +'" width="250px" height="250px"></a></center>',
-                "balloonContentFooter": '<center><a href="/graffiti/'+ data[i]["id"] +'" target=_blank>Посмотреть и обсудить</a></center>',
+                "balloonContent": '<center><a href="/graffiti/'+ data[i]["id"] +'"><img class="img-responsive" src="'+ data[i]["photo"] +'" width="250px" height="250px"></a></center>',
+                "balloonContentFooter": '<center><a href="/graffiti/'+ data[i]["id"] +'">Посмотреть и обсудить</a></center>',
                 "clusterCaption": "Граффити №" + data[i]["id"],
                 "hintContent": data[i]["name"]
               }

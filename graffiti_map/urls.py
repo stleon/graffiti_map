@@ -24,6 +24,8 @@ urlpatterns = [
         name='contacts'),
     url(r'^about$', TemplateView.as_view(template_name="about.html"),
         name='about'),
+    url(r'^help$', TemplateView.as_view(template_name="help.html"),
+        name='help'),
     url(r'^sitemap\.xml$', views.index, {'sitemaps': sitemaps}),
     url(r'^sitemap-(?P<section>.+)\.xml$', views.sitemap,
         {'sitemaps': sitemaps}),

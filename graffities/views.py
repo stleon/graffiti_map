@@ -18,7 +18,7 @@ class IndexGraffitiList(ListView):
                                            'date_created').reverse()
     context_object_name = 'graffities'
     page_kwarg = 'str'
-    paginate_by = 48
+    paginate_by = 15
 
     @method_decorator(require_http_methods(["GET", ]))
     def dispatch(self, *args, **kwargs):

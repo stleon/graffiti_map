@@ -2,7 +2,7 @@ ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
             center: [55.76, 37.64],
             zoom: 12
-        }),
+        },{suppressMapOpenBlock: true}),
         objectManager = new ymaps.ObjectManager({
             // Чтобы метки начали кластеризоваться, выставляем опцию.
             clusterize: true,

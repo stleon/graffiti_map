@@ -7,7 +7,6 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 
-
 {% endblock %}
 
 {% block application %}
@@ -34,8 +33,17 @@
 {% endif %}
 </p>
 
+<h2>Координаты</h2>
 
-<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus,surfingbird" data-yashareTheme="counter"></div>
+<p>Географическая широта: <span id="lat">{{ graffiti.lat }}</span></p>
+<p>Географическая долгота: <span id="lon">{{ graffiti.lon }}</span></p>
+
+<button id="toggle" type="button" class="btn btn-primary">Показать карту</button>
+<br>
+<div id="map"></div>
+<br>
+
+<script type="text/javascript" src="http://yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus,surfingbird" data-yashareTheme="counter"></div>
 
 <div id="hypercomments_widget"></div>
 <script type="text/javascript">
@@ -56,6 +64,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 {% endblock %}
 
 
-{% block js %}
-
+{% block scripts %}
+  <script src="{% static 'js/yandex_map.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/graffiti_page_map.js' %}" type="text/javascript"></script>
 {% endblock %}

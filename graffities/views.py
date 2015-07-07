@@ -8,6 +8,7 @@ from .models import Graffiti
 from .forms import AddGraffitiForm
 from .serializers import GraffitiSerializer
 from rest_framework import viewsets
+from django.core.urlresolvers import reverse
 
 
 class IndexGraffitiList(ListView):
@@ -28,7 +29,6 @@ class GraffitiDetail(DetailView):
     template_name = 'graffiti.html'
     context_object_name = 'graffiti'
     model = Graffiti
-    #queryset = get_object_or_404(pk=graffiti_id, active=True, checked=True)
 
     @method_decorator(require_http_methods(["GET", ]))
     def dispatch(self, *args, **kwargs):
@@ -39,11 +39,13 @@ class GraffitiCreateView(CreateView):
     template_name = 'add_graffiti.html'
     model = Graffiti
     form_class = AddGraffitiForm
-    success_url = "/success"
+
+    def get_success_url(self):
+        return reverse('success')
 
     def form_valid(self, form):
-        form.send_email(
-        )  # Оповещаем модераторов о том, что опубликовано новое граффити
+        # Оповещаем модераторов о том, что опубликовано новое граффити
+        form.send_email()
         return super(GraffitiCreateView, self).form_valid(form)
 
     @method_decorator(require_http_methods(["GET", "POST"]))

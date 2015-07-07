@@ -13,6 +13,7 @@ urlpatterns = [
         name='graffiti'),
     url(r'^add_graffiti$', GraffitiCreateView.as_view(),
         name='add_graffiti'),
-    url(r'^success$', TemplateView.as_view(template_name="success.html")),
+    url(r'^success$', TemplateView.as_view(template_name="success.html"),
+        name='success'),
     url(r'^api/', include(router.urls)),
 ]

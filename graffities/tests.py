@@ -1,7 +1,7 @@
 from django.test import TestCase, TransactionTestCase
-from .models import Graffiti
+from .models import Graffiti, validate_image
 from django.core.files import File
-from graffiti_map.settings import get_env_setting
+from graffiti_map.settings import get_env_setting, MEDIA_ROOT
 import os
 from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
@@ -9,6 +9,8 @@ from .views import IndexGraffitiList
 from django.test.client import Client
 from .forms import AddGraffitiForm
 from django.core.files.uploadedfile import SimpleUploadedFile
+import glob
+from django.core.exceptions import ValidationError
 
 
 class EnvTestCase(TestCase):
@@ -42,8 +44,7 @@ class GraffitiTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         # можете написать с mock, BytesIO, StringIO и тд
-        file = File(open('graffities/static/img/logo.png', 'rb'))
-        # потом для чего-нибудь можно будет использовать
+        file = File(open('graffities/static/img/logo.jpg', 'rb'))
         cls.data = Graffiti.objects.create(id=1,
                                            photo=file,
                                            name='Тестовое граффити',
@@ -54,10 +55,24 @@ class GraffitiTestCase(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.file_name = '%s/%s' % (MEDIA_ROOT,
+                                    str(GraffitiTestCase.data.photo))
+        self.file_generator = glob.iglob(self.file_name)
 
     def test_creation(self):
         graffiti = Graffiti.objects.get(name='Тестовое граффити')
         self.assertEqual(str(graffiti), '1, Тестовое граффити')
+
+    def test_validator(self):
+        self.assertRaises(ValidationError, validate_image, 'lol.png')
+
+    def test_creation_in_fs(self):
+        "проверяем, сохранилось ли фото в ФС"
+        # если генератор не пуст, значит, что все ок. вероятность одинаковых имен файлов очень мала
+        self.assertEqual(next(self.file_generator), self.file_name,
+                         'Имена файлов не совпадают')
+        # при слудующем next() должна быть вызвана ошибка, ведь элемент в генераторе один
+        self.assertRaises(StopIteration, next, self.file_generator)
 
     def test_index(self):
         response = self.client.get(reverse('index'))
@@ -76,6 +91,12 @@ class GraffitiTestCase(TestCase):
 
     def test_deletion(self):
         # не должно быть файлов и тд
+        GraffitiTestCase.data.delete()
+        # Поскольку файл удалили, то генератор должен быть пуст
+        self.assertRaises(StopIteration, next, self.file_generator)
+
+    def tearDown(self):
+        # тут можно было бы удалить файл, который создали, но есть test_deletion()
         pass
 
 
@@ -109,8 +130,8 @@ class GraffitiAdd(TestCase):
         }
 
     def test_form(self):
-        upload_file = open('graffities/static/img/logo.png',
-                           'rb')  # можно и сгенерить строку
+        # можно и сгенерить строку
+        upload_file = open('graffities/static/img/logo.jpg', 'rb')
         file_dict = {
             'photo': SimpleUploadedFile(upload_file.name, upload_file.read())
         }
@@ -119,7 +140,7 @@ class GraffitiAdd(TestCase):
                          'Чего-то не так в форме добавления граффити')
 
     def test_post(self):
-        with open('graffities/static/img/logo.png') as fp:
+        with open('graffities/static/img/logo.jpg') as fp:
             response = self.client.post(reverse('add_graffiti'),
                                         self.post_dict.update({'photo': fp}))
         # не проверяем наличие тех или иных полей формы, так как сделали это выше

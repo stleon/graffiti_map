@@ -2,7 +2,7 @@ import os
 import uuid
 from django.db import models
 from django.core.urlresolvers import reverse
-from sorl.thumbnail import ImageField, delete
+from sorl.thumbnail import delete
 from django.core.files.base import ContentFile
 from django_resized import ResizedImageField
 from django.core.exceptions import ValidationError

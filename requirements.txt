@@ -1,4 +1,4 @@
-django==1.8.2
+django==1.8.3
 Pillow
 django-recaptcha
 djangorestframework

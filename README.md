@@ -162,6 +162,7 @@ export SESSION_REDIS_PORT=port
 export SESSION_REDIS_DB=0-16
 export SESSION_REDIS_PASSWORD=pass
 export SESSION_REDIS_PREFIX=prefix
+export SERVER_IP=ip
 ```
 - надо создать свой **redis.conf**
 - Активируем виртуальное окружение `source env/bin/activate`

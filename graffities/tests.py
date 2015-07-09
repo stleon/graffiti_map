@@ -24,7 +24,7 @@ class EnvTestCase(TestCase):
                      'THUMBNAIL_REDIS_DB', 'THUMBNAIL_REDIS_PASSWORD',
                      'SESSION_REDIS_HOST', 'SESSION_REDIS_PORT',
                      'SESSION_REDIS_DB', 'SESSION_REDIS_PASSWORD',
-                     'SESSION_REDIS_PREFIX')
+                     'SESSION_REDIS_PREFIX', 'SERVER_IP')
 
     def test_all_vars(self):
         for var in self.vars:

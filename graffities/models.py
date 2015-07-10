@@ -6,9 +6,14 @@ from sorl.thumbnail import delete
 from django.core.files.base import ContentFile
 from django_resized import ResizedImageField
 from django.core.exceptions import ValidationError
-from django.db.models.signals import post_delete
+from django_cleanup.signals import cleanup_pre_delete, cleanup_post_delete
 from django.dispatch import receiver
 
+def sorl_delete(**kwargs):
+    from sorl.thumbnail import delete
+    delete(kwargs['file'])
+
+cleanup_pre_delete.connect(sorl_delete)
 
 def get_file_path(instance, filename):
     filename = "%s.%s" % (uuid.uuid4(), filename.split('.')[-1].lower())
@@ -53,11 +58,3 @@ class Graffiti(models.Model):
     class Meta:
         verbose_name = 'Граффити'
         verbose_name_plural = verbose_name
-
-
-@receiver(post_delete, sender=Graffiti)
-def photo_post_delete_handler(sender, **kwargs):
-    graffiti = kwargs['instance']
-    storage, path = graffiti.photo.storage, graffiti.photo.path
-    storage.delete(path)
-    delete(path)

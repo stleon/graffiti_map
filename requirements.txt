@@ -9,3 +9,4 @@ redis
 django-redis-sessions
 django-resized
 mysqlclient
+django-cleanup

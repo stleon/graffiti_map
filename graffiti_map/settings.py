@@ -34,7 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes', 'django.contrib.sessions',
     'django.contrib.messages', 'django.contrib.staticfiles',
     'django.contrib.sitemaps', 'graffities', 'captcha', 'rest_framework',
-    'djrill', 'sorl.thumbnail', 'corsheaders', )
+    'djrill', 'sorl.thumbnail', 'corsheaders', 'django_cleanup', )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

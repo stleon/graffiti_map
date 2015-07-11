@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Graffiti map by stleon</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Graffiti map</h1>
+        <h2>Карта граффити</h2>
+        <a href="https://github.com/stleon/graffiti_map" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="graffiti_map" class="anchor" href="#graffiti_map" aria-hidden="true"><span class="octicon octicon-link"></span></a>graffiti_map</h1>
+
+<h2>
+<a id="Основная-идея" class="anchor" href="#%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%B0%D1%8F-%D0%B8%D0%B4%D0%B5%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Основная идея</h2>
+
+<p>Вы можете размещать фото граффити на карте и добавлять к этому фото географические координаты. Также есть карта со всеми граффити, которые добавили другие люди.</p>
+
+<p>Проще говоря, <strong>graffiti_map</strong> - это:</p>
+
+<ul>
+<li>Способ самовыражения</li>
+<li>Энциклопедия местного стритарта</li>
+<li>Живой город</li>
+<li>Идеи, эмоции</li>
+<li>Маршруты прогулок (для туристов тоже)</li>
+</ul>
+
+<p>Приложение создано при поддержке <a href="http://te-st.ru">Теплицы социальных технологий</a>. На хакатоне «Делай Город» проекту было присуждено первое место - <a href="http://te-st.ru/2015/06/02/make-city-hackathon-results/">анонс</a>.</p>
+
+<p>На данный момент ведется активная разработка, <strong>graffiti_map</strong> будет интегрирована с <a href="http://partizaning.org">Партизанинг</a> (cайт об уличном искусстве, городе и человеческих взаимодействиях).</p>
+
+<h2>
+<a id="Демо" class="anchor" href="#%D0%94%D0%B5%D0%BC%D0%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>Демо</h2>
+
+<p>Видео</p>
+
+<p>Больше роликов на нашей странице</p>
+
+<h2>
+<a id="Запросы-к-api" class="anchor" href="#%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D1%8B-%D0%BA-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Запросы к API</h2>
+
+<p>Данные <strong>graffiti_map</strong> могут быть использованы абсолютно всеми. Они нужны, например, для генерации карт или сбора любой другой стастики.</p>
+
+<h3>
+<a id="Общая-информация" class="anchor" href="#%D0%9E%D0%B1%D1%89%D0%B0%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Общая информация</h3>
+
+<ul>
+<li>В ответе получаете <strong>JSON</strong>
+</li>
+<li>Разрешено 10 запросов в минуту</li>
+</ul>
+
+<h3>
+<a id="Условные-обозначения" class="anchor" href="#%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BE%D0%B1%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Условные обозначения</h3>
+
+<ul>
+<li>
+<code>req_to_server</code> - запрос от клиента к серверу</li>
+<li>
+<code>res_to_client</code> - ответ от сервера клиенту</li>
+</ul>
+
+<h3>
+<a id="Техническая-информация" class="anchor" href="#%D0%A2%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Техническая информация</h3>
+
+<p>Для использования <strong>API</strong> следует использовать соединение по <strong>http</strong> протоколу по адресу:</p>
+
+<pre><code>http://site.ru/api/
+</code></pre>
+
+<h3>
+<a id="Описание-методов-api" class="anchor" href="#%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Описание методов API</h3>
+
+<h4>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>api</h4>
+
+<p>Возвращает список методов для работы с данными <strong>graffiti_map</strong>:</p>
+
+<pre><code>//req_to_server
+
+GET http://site.ru/api/
+
+//res_to_client
+{
+    "graffities": "http://site.ru/api/graffities/"
+}
+</code></pre>
+
+<h4>
+<a id="graffities" class="anchor" href="#graffities" aria-hidden="true"><span class="octicon octicon-link"></span></a>graffities</h4>
+
+<p>Возвращает список граффити, на данный момент без <strong>pagination</strong>:</p>
+
+<pre><code>//req_to_server
+
+GET http://site.ru/api/graffities/
+
+//res_to_client
+[
+    {
+        "id": 1,
+        "photo": "http://site.ru/datastore/users_img/6dae1362-11d5-4c7e-95a4-ed59a6297804.jpg",
+        "name": "Test name",
+        "comment": "Test comment",
+        "lat": 55.739701,
+        "lon": 37.664635,
+        "date_created": "2015-06-28T15:24:35.869411Z",
+        "date_updated": "2015-06-28T15:24:35.869528Z"
+    }
+]
+</code></pre>
+
+<h2>
+<a id="sitemap" class="anchor" href="#sitemap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sitemap</h2>
+
+<p>Карта сайта (нужна для поисковиков) генерируется автоматически и доступна по адресу <code>/sitemap.xml</code>.</p>
+
+<p>Используется <a href="http://www.sitemaps.org/ru/protocol.html#index">индексный файл sitemap</a>.</p>
+
+<h2>
+<a id="Участие-в-разработке" class="anchor" href="#%D0%A3%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%B5-%D0%B2-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Участие в разработке</h2>
+
+<p>Чтобы ваш <strong>pull request</strong> был принят, нужно чтобы он соответствовал следующим правилам:</p>
+
+<ul>
+<li>Прежде чем приступать к работе, ее надо обсудить</li>
+<li>Каждый патч должен делать одно логическое изменение</li>
+<li>Код должен быть оформлен по PEP 8. 4 пробела, а не табы</li>
+<li>Код должен тестироваться. 100% покрытие не нужно, но лениться тоже не надо</li>
+</ul>
+
+<h2>
+<a id="Что-дальше" class="anchor" href="#%D0%A7%D1%82%D0%BE-%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Что дальше</h2>
+
+<h3>
+<a id="Релиз-002" class="anchor" href="#%D0%A0%D0%B5%D0%BB%D0%B8%D0%B7-002" aria-hidden="true"><span class="octicon octicon-link"></span></a>Релиз 0.0.2</h3>
+
+<ul>
+<li>[x] Переход с Bottle на <strong>Django</strong>
+</li>
+<li>[x] Настройка раздела администрирования</li>
+<li>[x] Страница добавления граффити (карта и форма)</li>
+<li>[x] Добавление <strong>Google ReCaptcha</strong> на форму добавления граффити</li>
+<li>[x] API для чтения (get) информации о всех граффити</li>
+<li>[x] Автоматически генерируемый <strong>sitemap</strong>
+</li>
+<li>[x] Интеграция с <a href="http://habrahabr.ru/post/256055/">Mandrill</a> для отправки уведомлений (если что-то поломалось и когда добавлены новые граффити)</li>
+<li>[x] Отображение карты при в админке при добавлении/редактировании граффити</li>
+<li>[x] Код вставки карты на свой сайт/блог</li>
+<li>[x] Конвертация фото граффити в jpg с максимальной шириной 1024</li>
+<li>[x] Легальные/Нелегальные граффити</li>
+<li>[ ] Bootstrap - это хорошо, но я ниразу не дизайнер, так что если кто захочет нарисовать крутой дизайн, сверстайте его, пожалуйста.</li>
+<li>[ ] favicon.ico</li>
+<li>[ ] apple-touch-icon-precomposed</li>
+<li>[ ] Лого</li>
+<li>[ ] Сбор новых идей для их реализации в релизе <strong>0.0.3</strong>
+</li>
+</ul>
+
+<h2>
+<a id="Инструкции-по-локальному-запуску" class="anchor" href="#%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-%D0%BF%D0%BE-%D0%BB%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D1%83-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D1%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>Инструкции по локальному запуску</h2>
+
+<p>Ниже описаны действия для людей, которые не знают о <strong>git clone</strong> и т.д.</p>
+
+<p>Если вы захотели потестрировать у себя дома, то вот последовательность действий (для версий выше <strong>0.0.1</strong>):</p>
+
+<ul>
+<li>Установаем <a href="https://www.python.org/downloads/">Python</a>, не ниже версии 3.4.3</li>
+<li>Скачиваем последнюю версию <strong>graffiti_map</strong>. <a href="https://github.com/stleon/graffiti_map/archive/master.zip">Стабильная</a>. Или выбираете интересующую вас ветку из <a href="https://github.com/stleon/graffiti_map/branches">списка</a>, щелкаете на нее и жмете <strong>Clone in Desktop</strong> или <strong>Download ZIP</strong> (не забудьте разархивировать)</li>
+<li>Далее, в зависимости от того, что вы будете использовать - .bashrc, .bash_profile, .profile или <a href="https://docs.python.org/3/library/venv.html">venv</a>, надо сохранить системные переменные.</li>
+</ul>
+
+<p>Если используете последний вариант, то в терминале/командной строке переходите в директорию проекта:</p>
+
+<pre><code>cd Downloads/graffiti_map // мой вариант, у вас может отличаться
+pyvenv env
+</code></pre>
+
+<p>Все дальнейшие действия делаются именно в терминале/командной строке из папки проекта.</p>
+
+<p>Добавляем системные переменные в  <strong>env/bin/activate</strong> (не забываем записать свои значения):</p>
+
+<pre><code>export SECRET_KEY=key
+export DB_NAME=name
+export DB_USER=user
+export DB_PASSWORD=pass
+export DB_HOST=host
+export DB_PORT=port
+export RECAPTCHA_PUBLIC_KEY=key
+export RECAPTCHA_PRIVATE_KEY=key
+export MANDRILL_API_KEY=key
+export ADMIN_URL='url'
+export THUMBNAIL_REDIS_HOST=host
+export THUMBNAIL_REDIS_PORT=port
+export THUMBNAIL_REDIS_DB=0-16
+export THUMBNAIL_REDIS_PASSWORD=pass
+export SESSION_REDIS_HOST=host
+export SESSION_REDIS_PORT=port
+export SESSION_REDIS_DB=0-16
+export SESSION_REDIS_PASSWORD=pass
+export SESSION_REDIS_PREFIX=prefix
+export SERVER_IP=ip
+</code></pre>
+
+<ul>
+<li>надо создать свой <strong>redis.conf</strong>
+</li>
+<li>Активируем виртуальное окружение <code>source env/bin/activate</code>
+</li>
+<li>Выполняем <code>pip install -r requirements.txt</code>
+</li>
+<li>После этого надо выполнить <code>python manage.py migrate</code>, <code>python manage.py createsuperuser</code>
+</li>
+<li>Открываем файл <strong>settings.py</strong> и проверяем <strong>DEBUG = True</strong>
+</li>
+<li>Если во всех пунктах ошибок не возникло, то <code>python manage.py runserver</code>
+</li>
+<li>Читаете внимательно лог, скорее всего в браузере ресурс будет доступен по адресу <code>http://127.0.0.1:8000</code>
+</li>
+</ul>
+
+<p>На каждой платформе могут быть свои специфические ситуации, если что-то не завелось, гуглите, а если не помогло, пишите в <a href="https://github.com/stleon/graffiti_map/issues">Issues</a>.</p>
+
+<h2>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h2>
+
+<h3>
+<a id="У-меня-есть-идеянайденный-багвопрос-Куда-мне-обратиться" class="anchor" href="#%D0%A3-%D0%BC%D0%B5%D0%BD%D1%8F-%D0%B5%D1%81%D1%82%D1%8C-%D0%B8%D0%B4%D0%B5%D1%8F%D0%BD%D0%B0%D0%B9%D0%B4%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B0%D0%B3%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81-%D0%9A%D1%83%D0%B4%D0%B0-%D0%BC%D0%BD%D0%B5-%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>У меня есть идея/найденный баг/вопрос. Куда мне обратиться?</h3>
+
+<p>Для этого есть <a href="https://github.com/stleon/graffiti_map/issues">Issues</a>. Изучите уже созданные, добавляйте свои, старайтесь использовать развернутое описание, чтобы можно было понять, чего вы хотите.</p>
+
+<h2>
+<a id="Что-было-сделано" class="anchor" href="#%D0%A7%D1%82%D0%BE-%D0%B1%D1%8B%D0%BB%D0%BE-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D0%BD%D0%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>Что было сделано</h2>
+
+<h3>
+<a id="Релиз-001" class="anchor" href="#%D0%A0%D0%B5%D0%BB%D0%B8%D0%B7-001" aria-hidden="true"><span class="octicon octicon-link"></span></a>Релиз 0.0.1</h3>
+
+<p><img src="https://raw.githubusercontent.com/stleon/stleon.github.io/master/downloads/graffiti.png" alt="С хакатона"></p>
+
+<p>За время хакатона реализовано:</p>
+
+<ul>
+<li>Список граффити, сортируются по дате добавления</li>
+<li>Страница граффити с комментариями от Disqus</li>
+<li>Карта с кластеризацией на основе Yandex Maps API</li>
+</ul>
+
+<p>Использовались:</p>
+
+<ul>
+<li>Python 3</li>
+<li>Bottle</li>
+<li>Pony ORM</li>
+<li>Bootstrap</li>
+<li>Yandex Maps API</li>
+</ul>
+
+<h2>
+<a id="Пожертвования" class="anchor" href="#%D0%9F%D0%BE%D0%B6%D0%B5%D1%80%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Пожертвования</h2>
+
+<p><strong>graffiti_map</strong> является результатом многочисленных часов работы энтузиастов. Проект некоммерческий и хостинг мы оплачиваем сами. Если вы оценили нашу работу, и вы хотите поддержать <strong>graffiti_map</strong>, пожалуйста, подумайте о <a href="http://yasobe.ru/na/graffiti_map">внесении пожертвований</a>.</p>
+
+<h2>
+<a id="Лицензия" class="anchor" href="#%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Лицензия</h2>
+
+<p>Copyright © 2015 by Tonkikh Lev Igorevich. All rights reserved.</p>
+
+<p>Эта программа является свободным программным обеспечением; вы можете распространять и/или изменять его в соответствии с условиями GNU General Public License, опубликованной Фондом свободного программного обеспечения, Версия 3 (или более поздней) с уточнениями и исключениями, описанными в файле лицензии. Это гарантирует ваше право использовать, модифицировать и распространять это программное обеспечение при определенных условиях.</p>
+
+<p>Также желательно указывать ссылку на данный репозиторий.</p>
+
+<h2>
+<a id="Разработчики" class="anchor" href="#%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%B8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Разработчики</h2>
+
+<ul>
+<li>
+<a href="mailto:leonst998@gmail.com">ST LEON</a> (<a href="https://twitter.com/inquisb">@STLEON</a>)</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/stleon/graffiti_map/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/stleon/graffiti_map/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/stleon/graffiti_map"></a> is maintained by <a href="https://github.com/stleon">stleon</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-65036122-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

@@ -118,7 +118,6 @@ GET http://site.ru/api/graffities/
 - [ ] favicon.ico
 - [ ] apple-touch-icon-precomposed
 - [ ] Лого
-- [ ] Сбор новых идей для их реализации в релизе **0.0.3**
 
 
 ##Инструкции по локальному запуску

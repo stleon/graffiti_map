@@ -64,7 +64,7 @@
             <li {% block add_graffiti %}{% endblock %}><a href="{% url 'add_graffiti' %}">Добавить граффити</a></li>
             <li><a href="{% url 'about' %}">О нас</a></li>
             <li><a href="{% url 'contacts' %}">Контакты</a></li>
-            <li><a href="{% url 'help' %}" target="_blank">Помощь проекту</a></li>
+            <li><a href="{% url 'help' %}">Помощь проекту</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="http://partizaning.org" target="_blank">Партизанинг</a></li>
@@ -215,10 +215,10 @@
         <p>Спроектировано и сделано с любовью от <a href="http://twitter.com/STLEON" target="_blank">@STLEON</a></p>
         <p>Поддерживается командой <a href="http://partizaning.org/" target="_blank">Партизанинг</a> и <a href="https://github.com/stleon/graffiti_map/graphs/contributors" target="_blank">добрыми людьми</a></p>
         <p>Исходный код распространяется под <a href="http://www.gnu.org/licenses/quick-guide-gplv3.ru.html" target="_blank">GNU GPLv3</a></p>
-        <p>© {% now "Y" %} <a href="#">Graffiti_Map</a></p>
+        <p>© {% now "Y" %} <a href="/">Graffiti_Map</a></p>
         <ul class="list-inline">
           <li><a href="https://github.com/stleon/graffiti_map" target="_blank">GitHub</a></li>
-          <li>Документация</li>
+          <li><a href="http://omgit.ru/graffiti_map" target="_blank">Документация</a></li>
           <li><a href="https://github.com/stleon/graffiti_map/issues" target="_blank">Вопросы</a></li>
           <li><a href="https://github.com/stleon/graffiti_map/releases" target="_blank">Релизы</a></li>
         </ul>

@@ -17,7 +17,7 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', get_env_setting('SERVER_IP')]
+ALLOWED_HOSTS = ['127.0.0.1', get_env_setting('SERVER_IP'), 'map.partizaning.org']
 
 INTERNAL_IPS = ('127.0.0.1', )
 

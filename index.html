@@ -183,6 +183,7 @@ GET http://site.ru/api/graffities/
 
 <ul>
 <li>Установаем <a href="https://www.python.org/downloads/">Python</a>, не ниже версии 3.4.3</li>
+<li>Устанавливаем <a href="http://redis.io">Redis</a> и настраиваем <strong>conf</strong>-файл, в зависимости от своей машины и предпочтений. Запускаем <strong>Redis</strong> командой <code>redis-server ~/redis.conf</code>, где <strong>~/redis.conf</strong> - пример пути до файла конфигурации.</li>
 <li>Скачиваем последнюю версию <strong>graffiti_map</strong>. <a href="https://github.com/stleon/graffiti_map/archive/master.zip">Стабильная</a>. Или выбираете интересующую вас ветку из <a href="https://github.com/stleon/graffiti_map/branches">списка</a>, щелкаете на нее и жмете <strong>Clone in Desktop</strong> или <strong>Download ZIP</strong> (не забудьте разархивировать)</li>
 <li>Далее, в зависимости от того, что вы будете использовать - .bashrc, .bash_profile, .profile или <a href="https://docs.python.org/3/library/venv.html">venv</a>, надо сохранить системные переменные.</li>
 </ul>
@@ -237,6 +238,19 @@ export SERVER_IP=ip
 </ul>
 
 <p>На каждой платформе могут быть свои специфические ситуации, если что-то не завелось, гуглите, а если не помогло, пишите в <a href="https://github.com/stleon/graffiti_map/issues">Issues</a>.</p>
+
+<h2>
+<a id="Рекомендации-по-установке-на-production" class="anchor" href="#%D0%A0%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8-%D0%BF%D0%BE-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B5-%D0%BD%D0%B0-production" aria-hidden="true"><span class="octicon octicon-link"></span></a>Рекомендации по установке на production</h2>
+
+<p>По поводу деплоя - это отдельная тема, и обязателен к прочтению весь раздел <a href="https://docs.djangoproject.com/en/1.8/howto/deployment/">Deploying Django</a>.</p>
+
+<p>Рекомендуется использовать <strong>uWSGI</strong> + <strong>nginx-full</strong>, не забываем правильно настроить фаервол.</p>
+
+<p>Во всем остальном инструкции одинаковые с локальным запуском, желательно установить <strong>git</strong> на сервер и, например, <strong>redis</strong> запускать в качестве демона.</p>
+
+<p>Вы можете разместить все на одном сервере, или использовать несколько серверов. На данный момент нагрузка на проект небольшая, поэтому сейчас не используются распределенные асинхронные очереди заданий, однако, их можно было бы использовать, например, при загрузке и обработке изображений.</p>
+
+<p>Поэтому при выборе технологий, инстансов и всего прочего - исходите из вопроса, какая будет нагрузка и сколько вы готовы отдать за хостинг или за улучшение кода.</p>
 
 <h2>
 <a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h2>

@@ -9,4 +9,4 @@ class MapWidget(forms.RadioSelect):
         return mark_safe(html)
 
     class Media():
-        js = ('js/jquery.min.js', 'js/yandex_map.js', 'js/add_map.js')
+        js = ('js/jquery.min.js', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU', 'js/add_map.js')

@@ -16,6 +16,7 @@
 <form action="{% url 'add_graffiti' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div id="map" style="width:auto; height:300px"></div>
+  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Добавьте объект на карте, чтобы получить его координаты
   {% for field in form %}
     <div class="form-group">
         {{ field.errors }}

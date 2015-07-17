@@ -12,7 +12,7 @@ class GraffitiAdmin(admin.ModelAdmin):
     search_fields = ['name', 'lat', 'lon']
     fieldsets = [
         (None, {'fields': ['photo']}),
-        ('Информация', {'fields': ['name', 'comment']}),
+        ('Информация', {'fields': ['name', 'comment', 'graffiti_type']}),
         ('Статус', {'fields': ['active', 'checked', 'legal']}),
         ('Координаты', {'fields': ['lat', 'lon']}),
         ('Карта', {'fields': ['ya_map']}),

@@ -27,6 +27,11 @@ def validate_image(image):
 
 
 class Graffiti(models.Model):
+    GRAFFITI_TYPE_CHOICES = (
+        ('gr', 'Граффити'),
+        ('sa', 'Уличное искусство'),
+        ('pa', 'Паблик-Арт'),
+        )
     width = models.PositiveIntegerField(editable=False, )
     height = models.PositiveIntegerField(editable=False, )
     photo = ResizedImageField('Фото, jpg',
@@ -42,6 +47,7 @@ class Graffiti(models.Model):
     active = models.BooleanField('Активное', default=True)
     checked = models.BooleanField('Проверенное', default=False)
     legal = models.BooleanField('Легальное', default=False)
+    graffiti_type = models.CharField('Тип граффити', max_length=2, choices=GRAFFITI_TYPE_CHOICES, default='gr',) 
     date_created = models.DateTimeField('Создано',
                                         auto_now_add=True,
                                         auto_now=False, )

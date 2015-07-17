@@ -35,8 +35,8 @@
 
 <h2>Координаты</h2>
 
-<p>Географическая широта: <span id="lat">{{ graffiti.lat }}</span></p>
-<p>Географическая долгота: <span id="lon">{{ graffiti.lon }}</span></p>
+<p>Географическая широта: <span id="lat">{{ graffiti.lat|stringformat:"f" }}</span></p>
+<p>Географическая долгота: <span id="lon">{{ graffiti.lon|stringformat:"f" }}</span></p>
 
 <button id="toggle" type="button" class="btn btn-primary">Показать карту</button>
 <br>

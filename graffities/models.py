@@ -29,7 +29,7 @@ def validate_image(image):
 class Graffiti(models.Model):
     width = models.PositiveIntegerField(editable=False, )
     height = models.PositiveIntegerField(editable=False, )
-    photo = ResizedImageField('Фото',
+    photo = ResizedImageField('Фото, jpg',
                               size=[2500, 1024],
                               upload_to=get_file_path,
                               height_field='height',

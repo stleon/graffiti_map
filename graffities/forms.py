@@ -23,7 +23,7 @@ class AddGraffitiForm(ModelForm):
 
     class Meta:
         model = Graffiti
-        exclude = ('checked', 'active', 'legal')
+        exclude = ('checked', 'active', 'legal', 'graffiti_type')
         widgets = {
             'photo': widgets.FileInput(
                 attrs={'accept': 'image/jpeg',

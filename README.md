@@ -78,6 +78,7 @@ GET http://site.ru/api/graffities/
         "comment": "Test comment",
         "lat": 55.739701,
         "lon": 37.664635,
+        "graffiti_type": "gr",
         "date_created": "2015-06-28T15:24:35.869411Z",
         "date_updated": "2015-06-28T15:24:35.869528Z"
     }

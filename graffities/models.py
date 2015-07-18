@@ -42,7 +42,7 @@ class Graffiti(models.Model):
                               width_field='width',
                               validators=[validate_image])
     name = models.CharField('Название', max_length=50)
-    comment = models.CharField('Комментарий', max_length=140)
+    comment = models.CharField('Комментарий', max_length=500)
     lat = models.FloatField('Географическая широта', )
     lon = models.FloatField('Географическая долгота', )
     active = models.BooleanField('Активное', default=True)

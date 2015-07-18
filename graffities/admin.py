@@ -8,7 +8,7 @@ from django import forms
 class GraffitiAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'photo', 'lat', 'lon', 'date_created',
                     'date_updated', 'active', 'checked', )
-    list_filter = ['active', 'checked', 'legal', ]
+    list_filter = ['active', 'checked', 'legal', 'graffiti_type']
     search_fields = ['name', 'lat', 'lon']
     fieldsets = [
         (None, {'fields': ['photo']}),

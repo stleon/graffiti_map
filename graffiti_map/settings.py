@@ -17,7 +17,9 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', get_env_setting('SERVER_IP'), 'map.partizaning.org']
+DOMEN = 'map.partizaning.org'
+
+ALLOWED_HOSTS = ['127.0.0.1', get_env_setting('SERVER_IP'), DOMEN]
 
 INTERNAL_IPS = ('127.0.0.1', )
 
@@ -187,7 +189,7 @@ REST_FRAMEWORK = {
 
 MANDRILL_API_KEY = get_env_setting('MANDRILL_API_KEY')
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
-EMAIL_HOST_USER = ADMINS[0][1]
+EMAIL_HOST_USER = 'partizaning.org@gmail.com'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # корреспонденция для менеджеров
 SERVER_EMAIL = EMAIL_HOST_USER  # для отправки сообщений о ошибках
 
@@ -201,15 +203,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = (
-        'x-requested-with',
-        'content-type',
-        'accept',
-        'origin',
-        'authorization',
-        'x-csrftoken',
-        'dnt',
-        'accept-encoding',
-    )
+    'x-requested-with', 'content-type', 'accept', 'origin', 'authorization',
+    'x-csrftoken', 'dnt', 'accept-encoding', )
 
 # THUMBNAIL
 

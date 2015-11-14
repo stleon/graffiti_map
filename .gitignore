@@ -61,3 +61,6 @@ target/
 # Databases
 *.sqlite3
 *.rdb
+
+# Confs
+*.conf

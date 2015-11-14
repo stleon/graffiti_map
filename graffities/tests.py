@@ -105,7 +105,7 @@ class IndexPageTest(TransactionTestCase):
         self.client = Client()
 
     def test_num_querises(self):
-        with self.assertNumQueries(1):
+        with self.assertNumQueries(2):
             response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200,
                          'Ошибка при запросе главной')

@@ -4,7 +4,9 @@ python: 3.5
 
 services: mysql
 
-install: pip install -r requirements.txt
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
 
 before_script:
   - sudo redis-server /etc/redis/redis.conf --port $REDIS_PORT --requirepass $REDIS_PASS
@@ -14,4 +16,14 @@ before_script:
   - python manage.py migrate
 
 script:
-  - python manage.py test
+  - coverage run --source=graffiti_map,graffities manage.py test
+
+after_success:
+  coveralls
+
+notifications:
+  email:
+    recipients:
+      - leonst998@gmail.com
+    on_success: always
+    on_failure: always

@@ -1,4 +1,4 @@
-#graffiti_map [![Build Status](https://travis-ci.org/stleon/graffiti_map.svg?branch=master)](https://travis-ci.org/stleon/graffiti_map)
+#graffiti_map [![Build Status](https://travis-ci.org/stleon/graffiti_map.svg?branch=master)](https://travis-ci.org/stleon/graffiti_map) [![Coverage Status](https://coveralls.io/repos/stleon/graffiti_map/badge.svg?branch=travis_notifications&service=github)](https://coveralls.io/github/stleon/graffiti_map?branch=travis_notifications)
 
 ##Основная идея
 Вы можете размещать фото граффити на карте и добавлять к этому фото географические координаты. Также есть карта со всеми граффити, которые добавили другие люди.

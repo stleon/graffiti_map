@@ -25,18 +25,25 @@ INTERNAL_IPS = ('127.0.0.1', )
 
 ADMINS = (('stleon', 'leonst998@gmail.com'), )
 
-MANAGERS = (
-    ('Igor', 'iponosov@gmail.com'), ('Make', 'makemakemakemake@gmail.com'),
-)
+MANAGERS = (('Igor', 'iponosov@gmail.com'),
+            ('Make', 'makemakemakemake@gmail.com'), )
 
 # Application definition
 
-INSTALLED_APPS = (
-    'django.contrib.admin', 'django.contrib.auth',
-    'django.contrib.contenttypes', 'django.contrib.sessions',
-    'django.contrib.messages', 'django.contrib.staticfiles',
-    'django.contrib.sitemaps', 'graffities', 'captcha', 'rest_framework',
-    'djrill', 'sorl.thumbnail', 'corsheaders', 'django_cleanup', )
+INSTALLED_APPS = ('django.contrib.admin',
+                  'django.contrib.auth',
+                  'django.contrib.contenttypes',
+                  'django.contrib.sessions',
+                  'django.contrib.messages',
+                  'django.contrib.staticfiles',
+                  'django.contrib.sitemaps',
+                  'graffities',
+                  'captcha',
+                  'rest_framework',
+                  'djrill',
+                  'sorl.thumbnail',
+                  'corsheaders',
+                  'django_cleanup', )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -151,9 +158,11 @@ LOGGING = {
     },
     'handlers': {
         'mail_admins': {
-            'level': 'ERROR', 'filters': [
+            'level': 'ERROR',
+            'filters': [
                 'require_debug_false'
-            ], 'class': 'django.utils.log.AdminEmailHandler'
+            ],
+            'class': 'django.utils.log.AdminEmailHandler'
         }
     },
     'loggers': {
@@ -174,14 +183,12 @@ RECAPTCHA_PRIVATE_KEY = get_env_setting('RECAPTCHA_PRIVATE_KEY')
 NOCAPTCHA = True
 
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
-    'DEFAULT_THROTTLE_CLASSES': (
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'),
+    'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer', ),
+    'DEFAULT_THROTTLE_CLASSES': ('rest_framework.throttling.AnonRateThrottle',
+                                 'rest_framework.throttling.UserRateThrottle'),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/minute', 'user': '10/minute'
+        'anon': '10/minute',
+        'user': '10/minute'
     },
 }
 
@@ -202,9 +209,14 @@ ADMIN_URL = get_env_setting('ADMIN_URL')
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = (
-    'x-requested-with', 'content-type', 'accept', 'origin', 'authorization',
-    'x-csrftoken', 'dnt', 'accept-encoding', )
+CORS_ALLOW_HEADERS = ('x-requested-with',
+                      'content-type',
+                      'accept',
+                      'origin',
+                      'authorization',
+                      'x-csrftoken',
+                      'dnt',
+                      'accept-encoding', )
 
 # THUMBNAIL
 

@@ -1,16 +1,16 @@
-from django.test import TestCase, TransactionTestCase
-from .models import Graffiti, validate_image
-from django.core.files import File
-from graffiti_map.settings import get_env_setting, MEDIA_ROOT
 import os
+import glob
+from django.test import TestCase, TransactionTestCase
+from django.core.files import File
 from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
-from .views import IndexGraffitiList
 from django.test.client import Client
-from .forms import AddGraffitiForm
 from django.core.files.uploadedfile import SimpleUploadedFile
-import glob
 from django.core.exceptions import ValidationError
+from .models import Graffiti, validate_image
+from .views import IndexGraffitiList
+from .forms import AddGraffitiForm
+from graffiti_map.settings import get_env_setting, MEDIA_ROOT
 
 
 class EnvTestCase(TestCase):
@@ -32,8 +32,8 @@ class EnvTestCase(TestCase):
 
     def test_result(self):
         for var in self.vars:
-            self.assertEqual(get_env_setting(var), os.environ[var],
-                             'Проблема с %s' % var)
+            self.assertEqual(
+                get_env_setting(var), os.environ[var], 'Проблема с %s' % var)
 
     def test_undeclared_var(self):
         # Исключение вызвано при обращении к несуществующей переменной окружения
@@ -69,16 +69,18 @@ class GraffitiTestCase(TestCase):
     def test_creation_in_fs(self):
         "проверяем, сохранилось ли фото в ФС"
         # если генератор не пуст, значит, что все ок. вероятность одинаковых имен файлов очень мала
-        self.assertEqual(next(self.file_generator), self.file_name,
-                         'Имена файлов не совпадают')
+        self.assertEqual(
+            next(self.file_generator), self.file_name,
+            'Имена файлов не совпадают')
         # при слудующем next() должна быть вызвана ошибка, ведь элемент в генераторе один
         self.assertRaises(StopIteration, next, self.file_generator)
 
     def test_index(self):
         response = self.client.get(reverse('index'))
         # Проверяем количество граффити на главной
-        self.assertEqual(len(response.context['graffities']), 1,
-                         'Должно быть одно граффити')
+        self.assertEqual(
+            len(response.context['graffities']), 1,
+            'Должно быть одно граффити')
 
     def test_graffiti_page(self):
         # не больше одного запроса
@@ -141,8 +143,8 @@ class GraffitiAdd(TestCase):
 
     def test_post(self):
         with open('graffities/static/img/logo.jpg') as fp:
-            response = self.client.post(reverse('add_graffiti'),
-                                        self.post_dict.update({'photo': fp}))
+            response = self.client.post(
+                reverse('add_graffiti'), self.post_dict.update({'photo': fp}))
         # не проверяем наличие тех или иных полей формы, так как сделали это выше
         self.assertEqual(response.status_code, 200,
                          'Проблема с публикацией граффити')

@@ -1,13 +1,20 @@
 from django.contrib import admin
+from django import forms
 from .models import Graffiti
 from .widgets import MapWidget
-from django import forms
 
 
 @admin.register(Graffiti)
 class GraffitiAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'photo', 'lat', 'lon', 'date_created',
-                    'date_updated', 'active', 'checked', )
+    list_display = ('id',
+                    'name',
+                    'photo',
+                    'lat',
+                    'lon',
+                    'date_created',
+                    'date_updated',
+                    'active',
+                    'checked', )
     list_filter = ['active', 'checked', 'legal', 'graffiti_type']
     search_fields = ['name', 'lat', 'lon']
     fieldsets = [

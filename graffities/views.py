@@ -4,18 +4,18 @@ from django.views.generic.edit import CreateView
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_http_methods
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
+from rest_framework import viewsets
 from .models import Graffiti
 from .forms import AddGraffitiForm
 from .serializers import GraffitiSerializer
-from rest_framework import viewsets
-from django.core.urlresolvers import reverse
 
 
 class IndexGraffitiList(ListView):
     template_name = 'index.html'
-    queryset = Graffiti.objects.filter(active=True,
-                                       checked=True).order_by(
-                                           'date_created').reverse()
+    queryset = Graffiti.objects.filter(
+        active=True,
+        checked=True).order_by('date_created').reverse()
     context_object_name = 'graffities'
     page_kwarg = 'str'
     paginate_by = 15

@@ -1,4 +1,4 @@
-django==1.8.6
+django==1.8.7
 Pillow==3.0.0
 django-recaptcha==1.0.4
 djangorestframework==3.3.1
